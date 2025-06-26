@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemesanan Online | Roti Daiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFF9F0;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .bread-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+            background-color: #FFF;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background-color: #C87941;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #A65F2B;
+        }
+        
+        .btn-secondary {
+            background-color: #F8E2CF;
+            color: #C87941;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #F0D4B9;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #F8E2CF;
+            color: #C87941;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .quantity-btn:hover {
+            background-color: #C87941;
+            color: white;
+        }
+        
+        .input-style {
+            border: 2px solid #F0D4B9;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .input-style:focus {
+            border-color: #C87941;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(200, 121, 65, 0.2);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bread-bg text-white py-16 px-4">
+            <div class="container mx-auto text-center">
+                <div class="flex justify-center mb-6">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPWTOigXHC4s2Jq1aJTWEPS-nTLyKot0alhBN4VtQCl-tmV7F29iXZuDoPXxX-mxVXBrzTa36G5xXzg4ZarWWegUAuN7QkfEBnEeJjl-IrE93CPvs5dAljCocRHbYhBZP4lcHSzyPEdRM6J3GXbTfl8a3SGNHm-vzYjZznVjzuZHAL0j7spYcvTrCO2Vg/s500/Roti%20Daiki%20Kotak%20(500%20x%20500%20px)%20(3).png" alt="Logo Roti Daiki" class="h-24 w-24 rounded-full bg-white p-1">
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Roti Daiki</h1>
+                <p class="text-xl opacity-90">Kelezatan dalam Setiap Gigitan</p>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto px-4 py-8 max-w-5xl">
+            <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8 animate-fade-in">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">Pesan Roti Favorit Anda</h2>
+                
+                <!-- Customer Info -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4">Informasi Pemesan</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="customer-name" class="block text-gray-600 mb-2">Nama</label>
+                            <input type="text" id="customer-name" class="w-full input-style" placeholder="Masukkan nama Anda">
+                        </div>
+                        <div>
+                            <label for="customer-whatsapp" class="block text-gray-600 mb-2">Nomor WhatsApp</label>
+                            <input type="tel" id="customer-whatsapp" class="w-full input-style" placeholder="Contoh: 08123456789">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Products -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4">Pilih Produk</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Product 1 -->
+                        <div class="product-card">
+                            <div class="h-48 overflow-hidden">
+                                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhBj_iDCJDtI14sEnNU9d7nIfixwyCqplkBrl6zCf2Bv20uyFMoTgXHNZ8Hpf_7iTDhWk7Jo2XusKrGxRiQSd_YWaziOzDI9FU8RrNyHqJtZ-wTsYHg5mlptVwU5pbXip0PTJdCCpU7-EpNFI_UnXZZpBbOiFsmZQ05k_ApO4dXwCZuhmDv1WELt082BUE/s320/Gambar%20WhatsApp%202025-06-26%20pukul%2011.30.25_c28fe79f.jpg" alt="Cranberry Cheese" class="product-image">
+                            </div>
+                            <div class="p-4">
+                                <h4 class="font-semibold text-lg mb-1">Cranberry Cheese</h4>
+                                <p class="text-gray-500 text-sm mb-3">Roti lembut dengan keju dan cranberry</p>
+                                <div class="flex justify-between items-center">
+                                    <p class="font-bold text-gray-800">Rp 18.000</p>
+                                    <div class="flex items-center">
+                                        <span class="quantity-btn minus" data-product="cranberry-cheese">-</span>
+                                        <input type="number" min="0" value="0" class="w-12 text-center mx-2 input-style py-1 px-0 product-quantity" data-product="cranberry-cheese" data-price="18000">
+                                        <span class="quantity-btn plus" data-product="cranberry-cheese">+</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 2 -->
+                        <div class="product-card">
+                            <div class="h-48 overflow-hidden">
+                                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7BHCClOA0F-p6yhD5Hhp8Orn7vso2FN0vM6hWOXY7mOnOf7zycEEyEVkBP7a7JX5RACrsEX0UE_XAU-dWvrPWATM79rc_lRz6AK_xnQCpIw9x2tVZHxA_hDErgAEbSiSQKMVenfDvGq-RBpxlAAUVPYWCIzkHLujR3AmleGOEA9f9DAJEehsYelZu0R4/s320/Gambar%20WhatsApp%202025-06-26%20pukul%2011.30.25_1ccb6dd3.jpg" alt="Double Choco" class="product-image">
+                            </div>
+                            <div class="p-4">
+                                <h4 class="font-semibold text-lg mb-1">Double Choco</h4>
+                                <p class="text-gray-500 text-sm mb-3">Roti dengan double cokelat yang lezat</p>
+                                <div class="flex justify-between items-center">
+                                    <p class="font-bold text-gray-800">Rp 20.000</p>
+                                    <div class="flex items-center">
+                                        <span class="quantity-btn minus" data-product="double-choco">-</span>
+                                        <input type="number" min="0" value="0" class="w-12 text-center mx-2 input-style py-1 px-0 product-quantity" data-product="double-choco" data-price="20000">
+                                        <span class="quantity-btn plus" data-product="double-choco">+</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 3 -->
+                        <div class="product-card">
+                            <div class="h-48 overflow-hidden">
+                                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEil3QJ8yrStTgJ8iw9MZls6XRBnWEA2v549Pnd5hgKf3VZPagrL0tVX06ZP23aM1EWp97cltACWHeC17tc3unc-GxY2bND_PZqVDul3CjUmCjg2iuj1AfE0a-jPad2HNIBG2Qh1K3hQzUiZovJke6Yg_JQZeU3zVV3cy3_HhWCl5Uq0RRfln0z2HUlAOrk/s320/Gambar%20WhatsApp%202025-05-18%20pukul%2016.12.27_628ca8c2.jpg" alt="Mini Cranberry" class="product-image">
+                            </div>
+                            <div class="p-4">
+                                <h4 class="font-semibold text-lg mb-1">Mini Cranberry</h4>
+                                <p class="text-gray-500 text-sm mb-3">10 pcs roti mini dengan cranberry</p>
+                                <div class="flex justify-between items-center">
+                                    <p class="font-bold text-gray-800">Rp 55.000</p>
+                                    <div class="flex items-center">
+                                        <span class="quantity-btn minus" data-product="mini-cranberry">-</span>
+                                        <input type="number" min="0" value="0" class="w-12 text-center mx-2 input-style py-1 px-0 product-quantity" data-product="mini-cranberry" data-price="55000">
+                                        <span class="quantity-btn plus" data-product="mini-cranberry">+</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 4 -->
+                        <div class="product-card">
+                            <div class="h-48 overflow-hidden">
+                                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHSyr0lSisX1jrFkEAo4rNCBqH0_WG3Ltj1UAK48zeCXcuQXwsHQZ87WpzjIK8z71km3xWB40la3cRfmCEYKnctJ7KfV_h3IN-CT9nJzwFZbPryG3T1_irBlRgSGI4prRImtN_wPiLGMafOat7yZD6_vJRP64NDrDus4brT2Hrg_EQCOSQITVwmBRzTwI/s320/Gambar%20WhatsApp%202025-05-18%20pukul%2016.12.26_f15a5ac9.jpg" alt="Mini Double Choco" class="product-image">
+                            </div>
+                            <div class="p-4">
+                                <h4 class="font-semibold text-lg mb-1">Mini Double Choco</h4>
+                                <p class="text-gray-500 text-sm mb-3">10 pcs roti mini dengan double cokelat</p>
+                                <div class="flex justify-between items-center">
+                                    <p class="font-bold text-gray-800">Rp 60.000</p>
+                                    <div class="flex items-center">
+                                        <span class="quantity-btn minus" data-product="mini-double-choco">-</span>
+                                        <input type="number" min="0" value="0" class="w-12 text-center mx-2 input-style py-1 px-0 product-quantity" data-product="mini-double-choco" data-price="60000">
+                                        <span class="quantity-btn plus" data-product="mini-double-choco">+</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 5 -->
+                        <div class="product-card">
+                            <div class="h-48 overflow-hidden">
+                                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3LonZ85JjVMxDtQM6OOTXnB_tAKtfPPhinRv0vcv02djyIHy7aBKEwTP8fSrqte-tQxTrGHYfUOrcKQDS9d-kJfJoveXgu1DRxUzad3s14xaiSEYwT5Xg8L-ALOrVo34lIaz_nLHDGf7lcEwybahVA1WyitQ3VFEaEHcDQLTjMEWjiAtpqofGOwOJSoY/s320/Gambar%20WhatsApp%202025-05-18%20pukul%2016.12.26_14926ae4.jpg" alt="Mini Mix" class="product-image">
+                            </div>
+                            <div class="p-4">
+                                <h4 class="font-semibold text-lg mb-1">Mini Mix</h4>
+                                <p class="text-gray-500 text-sm mb-3">10 pcs roti mini campuran varian</p>
+                                <div class="flex justify-between items-center">
+                                    <p class="font-bold text-gray-800">Rp 65.000</p>
+                                    <div class="flex items-center">
+                                        <span class="quantity-btn minus" data-product="mini-mix">-</span>
+                                        <input type="number" min="0" value="0" class="w-12 text-center mx-2 input-style py-1 px-0 product-quantity" data-product="mini-mix" data-price="65000">
+                                        <span class="quantity-btn plus" data-product="mini-mix">+</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Order Summary -->
+                <div class="bg-yellow-50 rounded-xl p-6 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4">Ringkasan Pesanan</h3>
+                    
+                    <div id="order-items" class="space-y-3 mb-4">
+                        <p class="text-gray-500 italic text-center">Belum ada item yang dipilih</p>
+                    </div>
+                    
+                    <div class="border-t border-gray-200 pt-4 mt-4">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-700">Total</span>
+                            <span id="total-price" class="font-bold text-xl text-gray-800">Rp 0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button id="order-button" class="btn-primary py-3 px-8 rounded-full text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                        Pesan Sekarang
+                    </button>
+                </div>
+            </div>
+            
+            <!-- About Section -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 animate-fade-in" style="animation-delay: 0.2s;">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Tentang Roti Daiki</h2>
+                        <p class="text-gray-600 mb-4">Roti Daiki adalah toko roti premium yang menyajikan berbagai varian roti dengan bahan-bahan berkualitas tinggi. Setiap roti dibuat dengan cinta dan keahlian untuk memberikan pengalaman rasa yang tak terlupakan.</p>
+                        <p class="text-gray-600">Kami berkomitmen untuk menggunakan bahan-bahan segar dan berkualitas terbaik. Nikmati kelezatan roti kami yang lembut dan menggugah selera!</p>
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPWTOigXHC4s2Jq1aJTWEPS-nTLyKot0alhBN4VtQCl-tmV7F29iXZuDoPXxX-mxVXBrzTa36G5xXzg4ZarWWegUAuN7QkfEBnEeJjl-IrE93CPvs5dAljCocRHbYhBZP4lcHSzyPEdRM6J3GXbTfl8a3SGNHm-vzYjZznVjzuZHAL0j7spYcvTrCO2Vg/s500/Roti%20Daiki%20Kotak%20(500%20x%20500%20px)%20(3).png" alt="Logo Roti Daiki" class="w-48 h-48 rounded-lg">
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-8 px-4 mt-12">
+            <div class="container mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-6 md:mb-0 flex items-center">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPWTOigXHC4s2Jq1aJTWEPS-nTLyKot0alhBN4VtQCl-tmV7F29iXZuDoPXxX-mxVXBrzTa36G5xXzg4ZarWWegUAuN7QkfEBnEeJjl-IrE93CPvs5dAljCocRHbYhBZP4lcHSzyPEdRM6J3GXbTfl8a3SGNHm-vzYjZznVjzuZHAL0j7spYcvTrCO2Vg/s500/Roti%20Daiki%20Kotak%20(500%20x%20500%20px)%20(3).png" alt="Logo Roti Daiki" class="h-10 w-10 mr-3 rounded-full bg-white p-1">
+                        <div>
+                            <h3 class="text-xl font-bold">Roti Daiki</h3>
+                            <p class="text-gray-400">Kelezatan dalam Setiap Gigitan</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-yellow-300 transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-yellow-300 transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-yellow-300 transition-colors">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400 text-sm">
+                    &copy; 2023 Roti Daiki. Hak Cipta Dilindungi.
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl p-6 max-w-md w-full mx-4">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Konfirmasi Pesanan</h3>
+            <p class="text-gray-600 mb-4">Apakah Anda yakin ingin memesan produk berikut?</p>
+            
+            <div id="modal-order-items" class="bg-gray-50 rounded-lg p-4 mb-4 max-h-60 overflow-y-auto">
+                <!-- Order items will be inserted here -->
+            </div>
+            
+            <div class="flex justify-between items-center mb-6">
+                <span class="font-semibold text-gray-700">Total</span>
+                <span id="modal-total-price" class="font-bold text-xl text-gray-800">Rp 0</span>
+            </div>
+            
+            <div class="flex space-x-4">
+                <button id="confirm-order" class="flex-1 py-3 px-6 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition duration-300">
+                    Pesan via WhatsApp
+                </button>
+                <button id="cancel-order" class="py-3 px-6 bg-gray-200 text-gray-800 font-bold rounded-lg hover:bg-gray-300 transition duration-300">
+                    Batal
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const quantityInputs = document.querySelectorAll('.product-quantity');
+            const plusButtons = document.querySelectorAll('.plus');
+            const minusButtons = document.querySelectorAll('.minus');
+            const orderItems = document.getElementById('order-items');
+            const totalPrice = document.getElementById('total-price');
+            const orderButton = document.getElementById('order-button');
+            const customerName = document.getElementById('customer-name');
+            const customerWhatsapp = document.getElementById('customer-whatsapp');
+            
+            const confirmationModal = document.getElementById('confirmation-modal');
+            const modalOrderItems = document.getElementById('modal-order-items');
+            const modalTotalPrice = document.getElementById('modal-total-price');
+            const confirmOrderBtn = document.getElementById('confirm-order');
+            const cancelOrderBtn = document.getElementById('cancel-order');
+            
+            // Product names mapping
+            const productNames = {
+                'cranberry-cheese': 'Cranberry Cheese',
+                'double-choco': 'Double Choco',
+                'mini-cranberry': 'Mini Cranberry (isi 10)',
+                'mini-double-choco': 'Mini Double Choco (isi 10)',
+                'mini-mix': 'Mini Mix (isi 10)'
+            };
+            
+            // Format currency
+            function formatCurrency(amount) {
+                return 'Rp ' + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            }
+            
+            // Update order summary
+            function updateOrderSummary() {
+                let hasItems = false;
+                let total = 0;
+                let orderHTML = '';
+                
+                quantityInputs.forEach(input => {
+                    const quantity = parseInt(input.value);
+                    if (quantity > 0) {
+                        hasItems = true;
+                        const product = input.dataset.product;
+                        const price = parseInt(input.dataset.price);
+                        const subtotal = price * quantity;
+                        total += subtotal;
+                        
+                        orderHTML += `
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="font-medium">${productNames[product]}</span>
+                                    <span class="text-gray-500 text-sm"> x ${quantity}</span>
+                                </div>
+                                <span>${formatCurrency(subtotal)}</span>
+                            </div>
+                        `;
+                    }
+                });
+                
+                if (hasItems) {
+                    orderItems.innerHTML = orderHTML;
+                } else {
+                    orderItems.innerHTML = '<p class="text-gray-500 italic text-center">Belum ada item yang dipilih</p>';
+                }
+                
+                totalPrice.textContent = formatCurrency(total);
+                
+                // Enable/disable order button
+                const nameValid = customerName.value.trim() !== '';
+                const whatsappValid = customerWhatsapp.value.trim() !== '' && /^\d+$/.test(customerWhatsapp.value.trim());
+                
+                orderButton.disabled = !hasItems || !nameValid || !whatsappValid;
+            }
+            
+            // Event listeners for quantity buttons
+            plusButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const product = this.dataset.product;
+                    const input = document.querySelector(`.product-quantity[data-product="${product}"]`);
+                    input.value = parseInt(input.value) + 1;
+                    updateOrderSummary();
+                });
+            });
+            
+            minusButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const product = this.dataset.product;
+                    const input = document.querySelector(`.product-quantity[data-product="${product}"]`);
+                    if (parseInt(input.value) > 0) {
+                        input.value = parseInt(input.value) - 1;
+                        updateOrderSummary();
+                    }
+                });
+            });
+            
+            // Event listeners for quantity inputs
+            quantityInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    if (parseInt(this.value) < 0) {
+                        this.value = 0;
+                    }
+                    updateOrderSummary();
+                });
+            });
+            
+            // Event listeners for customer info
+            customerName.addEventListener('input', updateOrderSummary);
+            customerWhatsapp.addEventListener('input', updateOrderSummary);
+            
+            // Order button click
+            orderButton.addEventListener('click', function() {
+                // Populate modal
+                modalOrderItems.innerHTML = orderItems.innerHTML;
+                modalTotalPrice.textContent = totalPrice.textContent;
+                confirmationModal.classList.remove('hidden');
+            });
+            
+            // Cancel order
+            cancelOrderBtn.addEventListener('click', function() {
+                confirmationModal.classList.add('hidden');
+            });
+            
+            // Confirm order and send to WhatsApp
+            confirmOrderBtn.addEventListener('click', function() {
+                const name = customerName.value.trim();
+                const whatsapp = customerWhatsapp.value.trim();
+                
+                let orderMessage = `Halo, saya ingin memesan roti:\n\n`;
+                let hasItems = false;
+                let total = 0;
+                
+                quantityInputs.forEach(input => {
+                    const quantity = parseInt(input.value);
+                    if (quantity > 0) {
+                        hasItems = true;
+                        const product = input.dataset.product;
+                        const price = parseInt(input.dataset.price);
+                        const subtotal = price * quantity;
+                        total += subtotal;
+                        
+                        orderMessage += `${productNames[product]} x ${quantity}: ${formatCurrency(subtotal)}\n`;
+                    }
+                });
+                
+                orderMessage += `\nTotal: ${formatCurrency(total)}`;
+                orderMessage += `\n\nNama: ${name}`;
+                orderMessage += `\nNo. WhatsApp: ${whatsapp}`;
+                
+                // WhatsApp number with country code
+                const whatsappNumber = '6285224131324'; // Updated with country code
+                const encodedMessage = encodeURIComponent(orderMessage);
+                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                
+                // Open WhatsApp
+                window.open(whatsappURL, '_blank');
+                
+                // Hide modal
+                confirmationModal.classList.add('hidden');
+            });
+            
+            // Initialize
+            updateOrderSummary();
+        });
+    </script>
+</body>
+</html>
