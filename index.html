@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -121,24 +123,9 @@
         </header>
         
         <!-- Main Content -->
-        <main class="flex-grow container mx-auto px-4 py-8 max-w-5xl">
+        <main class="flex-grow container mx-auto px-4 py-8 max-w-6xl">
             <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8 animate-fade-in">
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">Pesan Roti Favorit Anda</h2>
-                
-                <!-- Customer Info -->
-                <div class="mb-8">
-                    <h3 class="text-xl font-semibold text-gray-700 mb-4">Informasi Pemesan</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label for="customer-name" class="block text-gray-600 mb-2">Nama</label>
-                            <input type="text" id="customer-name" class="w-full input-style" placeholder="Masukkan nama Anda">
-                        </div>
-                        <div>
-                            <label for="customer-whatsapp" class="block text-gray-600 mb-2">Nomor WhatsApp</label>
-                            <input type="tel" id="customer-whatsapp" class="w-full input-style" placeholder="Contoh: 08123456789">
-                        </div>
-                    </div>
-                </div>
                 
                 <!-- Products -->
                 <div class="mb-8">
@@ -238,6 +225,59 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        
+                        <!-- Product 6 - NEW -->
+                        <div class="product-card">
+                            <div class="h-48 overflow-hidden">
+                                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEicY2R9tzXOhPJGujeNm8Q1Omc1WQlI7PRThxXbUrETCFHA9b7axKLh9IJr7uJEdRUtdIDTZQn3Im19wUdmnxSLzW0_EAkxmddu1uSVKXNQ_Oya7qvtt_ERB0UZ3La1wsEb-zEMp4fwv1MeNOzWcHeJEira9uN1oPUSJehMvnokEHj0af8w7b5m74MC57Y/s957/Roti%20Sosis%20Keju.jpg" alt="Banan Cream Cheese" class="product-image">
+                            </div>
+                            <div class="p-4">
+                                <h4 class="font-semibold text-lg mb-1">Banan Cream Cheese</h4>
+                                <p class="text-gray-500 text-sm mb-3">Roti lembut dengan isi pisang dicampur krim keju</p>
+                                <div class="flex justify-between items-center">
+                                    <p class="font-bold text-gray-800">Rp 8.000</p>
+                                    <div class="flex items-center">
+                                        <span class="quantity-btn minus" data-product="banan-cream-cheese">-</span>
+                                        <input type="number" min="0" value="0" class="w-12 text-center mx-2 input-style py-1 px-0 product-quantity" data-product="banan-cream-cheese" data-price="8000">
+                                        <span class="quantity-btn plus" data-product="banan-cream-cheese">+</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 7 - NEW -->
+                        <div class="product-card">
+                            <div class="h-48 overflow-hidden">
+                                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEicY2R9tzXOhPJGujeNm8Q1Omc1WQlI7PRThxXbUrETCFHA9b7axKLh9IJr7uJEdRUtdIDTZQn3Im19wUdmnxSLzW0_EAkxmddu1uSVKXNQ_Oya7qvtt_ERB0UZ3La1wsEb-zEMp4fwv1MeNOzWcHeJEira9uN1oPUSJehMvnokEHj0af8w7b5m74MC57Y/s957/Roti%20Sosis%20Keju.jpg" alt="Roti Sosis Keju" class="product-image">
+                            </div>
+                            <div class="p-4">
+                                <h4 class="font-semibold text-lg mb-1">Roti Sosis Keju</h4>
+                                <p class="text-gray-500 text-sm mb-3">Roti lembut dengan toping Keju dan Sosis Premium</p>
+                                <div class="flex justify-between items-center">
+                                    <p class="font-bold text-gray-800">Rp 10.000</p>
+                                    <div class="flex items-center">
+                                        <span class="quantity-btn minus" data-product="roti-sosis-keju">-</span>
+                                        <input type="number" min="0" value="0" class="w-12 text-center mx-2 input-style py-1 px-0 product-quantity" data-product="roti-sosis-keju" data-price="10000">
+                                        <span class="quantity-btn plus" data-product="roti-sosis-keju">+</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Customer Info - MOVED HERE -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4">Informasi Pemesan</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="customer-name" class="block text-gray-600 mb-2">Nama</label>
+                            <input type="text" id="customer-name" class="w-full input-style" placeholder="Masukkan nama Anda">
+                        </div>
+                        <div>
+                            <label for="customer-whatsapp" class="block text-gray-600 mb-2">Nomor WhatsApp</label>
+                            <input type="tel" id="customer-whatsapp" class="w-full input-style" placeholder="Contoh: 08123456789">
                         </div>
                     </div>
                 </div>
@@ -355,13 +395,15 @@
             const confirmOrderBtn = document.getElementById('confirm-order');
             const cancelOrderBtn = document.getElementById('cancel-order');
             
-            // Product names mapping
+            // Product names mapping - UPDATED with new products
             const productNames = {
                 'cranberry-cheese': 'Cranberry Cheese',
                 'double-choco': 'Double Choco',
                 'mini-cranberry': 'Mini Cranberry (isi 10)',
                 'mini-double-choco': 'Mini Double Choco (isi 10)',
-                'mini-mix': 'Mini Mix (isi 10)'
+                'mini-mix': 'Mini Mix (isi 10)',
+                'banan-cream-cheese': 'Banan Cream Cheese',
+                'roti-sosis-keju': 'Roti Sosis Keju'
             };
             
             // Format currency
@@ -501,5 +543,5 @@
             updateOrderSummary();
         });
     </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'961c4d34f091ea89',t:'MTc1Mjk0OTk0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
